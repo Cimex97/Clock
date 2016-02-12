@@ -4,12 +4,12 @@
 
 #include <avr/io.h>
 #include <stdint.h>
+#include "../h-data/number.h"
 
 int main(){
-  DDRC |= (1<<PC7);
   
-  
-  PORTC |= (1<<PC7);
+  struct number* number;
+  aufbau(&number);
 
   while(1){
   }

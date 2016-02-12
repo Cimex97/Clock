@@ -1,91 +1,19 @@
-TARGET=clock
-MCU=atmega8515
-SOURCES=source/main.c
+#Makfile Clock
+SOURCE = source/c-data/main.c source/c-data/number.c source/h-data/number.h
+OBJ = source/o-data/main.o source/o-data/number.o
+ELF = source/elf-data/clock.elf
+HEX = source/hex-data/clock.hex
+MCU = atmega8515
+all: clock clock_elf clock_hex
 
-PROGRAMMER=stk500v2
-#auskommentieren für automatische Wahl
-PORT=-P/dev/ttyACM0
-#BAUD=-B115200
+clock: $(SOURCE)
+	avr-gcc -g -Os -mmcu=$(MCU) -c $(SOURCE)
+		mv main.o source/main.o
+			mv number.o source/number.o
+clock_elf: clock $(OBJ)
+	avr-gcc -g -mmcu=$(MCU) -o source/clock.elf $(OBJ)
+clock_hex: $(ELF)
+	avr-objcopy -j .text -j .data -O ihex $(ELF) source/hex-data/clock.hex
 
-#Ab hier nichts verändern
-OBJECTS=$(SOURCES:.c=.o)
-CFLAGS=-c -Os
-LDFLAGS=
-
-all: hex eeprom
-
-hex: $(TARGET).hex
-
-eeprom: $(TARGET)_eeprom.hex
-
-$(TARGET).hex: $(TARGET).elf
-	       avr-objcopy -O ihex -j .data -j .text $(TARGET).elf $(TARGET).hex
-
-$(TARGET)_eeprom.hex: $(TARGET).elf
-		      avr-objcopy -O ihex -j .eeprom --change-section-lma .eeprom=1 $(TARGET).elf $(TARGET)_eeprom.hex
-
-$(TARGET).elf: $(OBJECTS)
-	       avr-gcc $(LDFLAGS) -mmcu=$(MCU) $(OBJECTS) -o $(TARGET).elf
-
-.c.o:
-	avr-gcc $(CFLAGS) -mmcu=$(MCU) $< -o $@
-
-size:
-	avr-size --mcu=$(MCU) -C $(TARGET).elf
-
-program:
-	avrdude -p$(MCU) $(PORT) $(BAUD) -c$(PROGRAMMER) -Uflash:w:$(TARGET).hex:a
-
-clean_tmp:
-	rm -rf *.o
-	   rm -rf *.elf
-
-clean:
-	rm -rf *.o
-	   rm -rf *.elf
-	      rm -rf *.hexARGET=blink
-	      MCU=atmega328p
-	      SOURCES=blink.c
-
-PROGRAMMER=arduino
-#auskommentieren für automatische Wahl
-PORT=-P/dev/ttyS0
-BAUD=-B115200
-
-#Ab hier nichts verändern
-OBJECTS=$(SOURCES:.c=.o)
-CFLAGS=-c -Os
-LDFLAGS=
-
-all: hex eeprom
-
-hex: $(TARGET).hex
-
-eeprom: $(TARGET)_eeprom.hex
-
-$(TARGET).hex: $(TARGET).elf
-	       avr-objcopy -O ihex -j .data -j .text $(TARGET).elf $(TARGET).hex
-
-$(TARGET)_eeprom.hex: $(TARGET).elf
-		      avr-objcopy -O ihex -j .eeprom --change-section-lma .eeprom=1 $(TARGET).elf $(TARGET)_eeprom.hex
-
-$(TARGET).elf: $(OBJECTS)
-	       avr-gcc $(LDFLAGS) -mmcu=$(MCU) $(OBJECTS) -o $(TARGET).elf
-
-.c.o:
-	avr-gcc $(CFLAGS) -mmcu=$(MCU) $< -o $@
-
-size:
-	avr-size --mcu=$(MCU) -C $(TARGET).elf
-
-program:
-	avrdude -p$(MCU) $(PORT) $(BAUD) -c$(PROGRAMMER) -Uflash:w:$(TARGET).hex:a
-
-clean_tmp:
-	rm -rf *.o
-	   rm -rf *.elf
-
-clean:
-	rm -rf *.o
-	   rm -rf *.elf
-	      rm -rf *.hex
+programm:
+	avrdude -c stk500v2 -p m8515 -P /dev/ttyACM0 -U flash:w:source/hex-data/clock.hex
