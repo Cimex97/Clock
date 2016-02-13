@@ -1,0 +1,12 @@
+#include <avr/io.h>
+#include <stdint.h>
+
+#include "../h-data/time.h"
+#include "../h-data/number.h"
+
+int clock(uint8_t* one_m, uint8_t* ten_m, uint8_t* one_h, uint8_t* ten_h, struct value* numbers)
+{
+  
+  return 0;
+}
+

@@ -1,0 +1,12 @@
+#ifndef __TIME_H__
+#define __TIME_H__
+
+#include <stdint.h>
+
+int time(uint8_t* one_m, uint8_t* ten_m, uint8_t* one_h, uint8_t* ten_h, struct value* numbers);
+
+volatile uint8_t* one_m;
+volatile uint8_t* ten_m;
+volatile uint8_t* one_h;
+volatile uint8_t* ten_h;
+#endif
