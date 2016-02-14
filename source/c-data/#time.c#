@@ -12,6 +12,7 @@ int clock(uint8_t* m_one, uint8_t* m_ten, uint8_t* h_one, uint8_t* h_ten, struct
   else if(second >=3600){
     int hour = second / 24;
   }
+  
   return 0;
 }
 

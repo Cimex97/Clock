@@ -1,5 +1,6 @@
 #include <avr/io.h>
 #include "../h-data/number.h"
+#include <avr/interrupt.h>
 
 int setting(struct value* numbers){
   //direction of the pins
@@ -25,6 +26,11 @@ int setting(struct value* numbers){
   numbers->eight = 0x01;
   numbers->nine = 0x09;
   
+  //init timer
+  TIMSK |= (1<<TOIE0);
+  TCCR0 |= (1<<CS00);
+  TCCR0 &= ~(1<<CS01);
+  TCCR0 &= ~(1<<CS02);
   
   return 0;
 }
