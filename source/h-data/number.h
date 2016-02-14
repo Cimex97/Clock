@@ -17,9 +17,13 @@ struct value {
   uint8_t seven;
   uint8_t eight;
   uint8_t nine;
-  
+
+  uint8_t m_one;
+  uint8_t m_ten;
+  uint8_t h_one;
+  uint8_t h_ten;
 };
 
-int setting(struct value* number);
+int setting(struct value* numbers);
 
 #endif

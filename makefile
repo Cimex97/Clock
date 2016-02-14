@@ -18,4 +18,4 @@ clock_hex: $(ELF)
 	avr-objcopy -j .text -j .data -O ihex $(ELF) source/hex-data/clock.hex
 
 programm:
-	avrdude -c stk500v2 -p m8515 -P /dev/ttyACM0 -U flash:w:source/hex-data/clock.hex
+	sudo avrdude -c stk500v2 -p m8515 -P /dev/ttyACM0 -U flash:w:source/hex-data/clock.hex
