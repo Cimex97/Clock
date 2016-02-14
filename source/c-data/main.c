@@ -14,19 +14,17 @@
 #include "../h-data/display.h"
 #include "../h-data/time.h"
 
-volatile int cnt_1 = 0;
-volatile int cnt_2 = 0;
-volatile int second = 0;
-
 int main(){
 
   struct value numbers;
   struct value* zeiger = &numbers;
-  uint8_t m_one = numbers.four; //display
-  uint8_t m_ten = numbers.three;
-  uint8_t h_one = numbers.two;
-  uint8_t h_ten = numbers.one;
-  
+  uint8_t m_one = numbers.zero; //display
+  uint8_t m_ten = numbers.zero;
+  uint8_t h_one = numbers.zero;
+  uint8_t h_ten = numbers.zero;
+  cnt_1 = 0;
+  cnt_2 = 0;
+  second = 0;
   setting(zeiger);
   sei();
 
