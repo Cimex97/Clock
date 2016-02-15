@@ -15,24 +15,32 @@
 #include "../h-data/time.h"
 
 int main(){
-
+  
   struct value numbers;
   struct value* zeiger = &numbers;
+
+  //init zero number after reboot
   numbers.m_one = numbers.zero;
   numbers.m_ten = numbers.zero;
   numbers.h_one = numbers.zero;
   numbers.h_ten = numbers.zero;
   
+  //counter and seconds reset
   cnt_1 = 0;
   cnt_2 = 0;
   second = 0;
+  
+  //pin settings
   setting(zeiger);
   sei();
 
   while(1){
     multiplex(zeiger);  //display numbers multiplex
 
-    clock(zeiger);
+    clock_calc(zeiger);
+    
+    clock(numbers.first, &(numbers.m_one), zeiger);
+    
   }
   return 0;
     
