@@ -5,10 +5,10 @@
 
 int time(struct value* numbers);
 int clock_calc(struct value* numbers);
-int clock(uint8_t* number, uint8_t* segment, struct value* numbers);
+int clock(int number, uint8_t* segment, struct value* numbers);
 
 volatile int cnt_1;
 volatile int cnt_2;
-volatile int second;
+volatile unsigned long int second;
 
 #endif

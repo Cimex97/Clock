@@ -27,9 +27,9 @@ int main(){
   numbers.h_ten = numbers.zero;
   
   //counter and seconds reset
-  cnt_1 = 1;
-  cnt_2 = 1;
-  second = 1;
+  cnt_1 = 0;
+  cnt_2 = 0;
+  second = 0;
   
   //pin settings
   setting(zeiger);
@@ -54,11 +54,11 @@ int main(){
 
 ISR(TIMER0_OVF_vect){
 
-    if(cnt_1<1){
+    if(cnt_1<100){
       cnt_1++;
     }
     else{
-      if(cnt_2<140){
+      if(cnt_2<100){
 	cnt_2++;
       }
       else{

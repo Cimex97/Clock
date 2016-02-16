@@ -26,15 +26,12 @@ struct value {
   uint8_t h_ten;
 
   //clock time
-  uint8_t first;
-  uint8_t ten;
-  uint8_t hundred;
-  uint8_t thousand;
+  int first;
+  int ten;
+  int hundred;
+  int thousand;
 
-  //calculatot clock time
-  uint8_t hour;
-  uint8_t minute;
-
+  
   uint8_t segment;
 };
 

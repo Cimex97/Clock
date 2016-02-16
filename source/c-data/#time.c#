@@ -5,18 +5,14 @@
 #include "../h-data/time.h"
 
 
-int clock_calc(struct value* numbers)
-{
-  numbers->thousand = (second / 3600) / 10;
-  numbers->hundred = (second / 3600) - 10* numbers->thousand;
+thousand;
   numbers->ten = ((second % 3600) / 60) / 10;
   numbers->first = ((second % 3600) / 60) -10* numbers->ten;
-  
   return 0;
 }
 
 
-int clock(int number, uint8_t* segment, struct value* numbers)
+int clock(uint8_t* number, uint8_t* segment, struct value* numbers)
 {
 
   uint8_t cnt = number;
