@@ -7,7 +7,11 @@
 
 int clock_calc(struct value* numbers)
 {
-  numbers->hour = second / 3600;
+  if((second % 3600)== 0)
+    {
+      numbers->hour = second / 3600;
+    }
+  if((second % 1440)== 0){}
   numbers->minute = second / 60;
   
   //calc hour from 24 to 2   4
