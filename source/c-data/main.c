@@ -11,8 +11,9 @@
 
 //myself header
 #include "../h-data/number.h"
-#include "../h-data/display.h"
 #include "../h-data/time.h"
+#include "../h-data/display.h"
+
 
 int main(){
   
@@ -38,8 +39,12 @@ int main(){
     multiplex(zeiger);  //display numbers multiplex
 
     clock_calc(zeiger);
-    
-    clock(numbers.first, &(numbers.m_one), zeiger);
+
+    //load the correct time
+    clock(numbers.first, &numbers.m_one, zeiger);
+    clock(numbers.ten, &numbers.m_ten, zeiger);
+    clock(numbers.hundred, &numbers.h_one, zeiger);
+    clock(numbers.thousand, &numbers.h_ten, zeiger);
     
   }
   return 0;
@@ -49,7 +54,7 @@ int main(){
 
 ISR(TIMER0_OVF_vect){
 
-    if(cnt_1<31372){
+    if(cnt_1<100){
       cnt_1++;
     }
     else{
@@ -69,5 +74,5 @@ ISR(TIMER0_OVF_vect){
       }
     }
 
- }
+}
 

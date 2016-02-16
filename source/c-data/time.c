@@ -29,46 +29,47 @@ int clock(uint8_t* number, uint8_t* segment, struct value* numbers)
  
   switch(cnt){
   case 0:
-    numbers->m_one = numbers->zero;
+    *segment = numbers->zero;
     break;
     
   case 1:
-    numbers->m_one = numbers->one;
+    *segment = numbers->one;
     break;
     
   case 2:
-    numbers->m_one = numbers->two;
+    *segment = numbers->two;
     break;
     
   case 3:
-    numbers->m_one = numbers->three;
+    *segment = numbers->three;
       break;
     
   case 4:
-    numbers->m_one = numbers->four;
+    *segment = numbers->four;
       break;
     
   case 5:
-    numbers->m_one = numbers->five;
+    *segment = numbers->five;
       break;
     
   case 6:
-    numbers->m_one = numbers->six;
+    *segment = numbers->six;
       break;
     
   case 7:
-    numbers->m_one = numbers->seven;
+    *segment = numbers->seven;
       break;
     
   case 8:
-    numbers->m_one = numbers->eight;
+    *segment = numbers->eight;
       break;
     
   case 9:
-    numbers->m_one = numbers->nine;
+    *segment = numbers->nine;
       break;
     
   default:
+    return -1;
     break;
   }
 

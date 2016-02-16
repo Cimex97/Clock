@@ -35,7 +35,7 @@ struct value {
   uint8_t hour;
   uint8_t minute;
 
-  uint8_t* segment;
+  uint8_t segment;
 };
 
 int setting(struct value* numbers);
