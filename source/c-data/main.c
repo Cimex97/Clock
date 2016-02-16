@@ -54,11 +54,11 @@ int main(){
 
 ISR(TIMER0_OVF_vect){
 
-    if(cnt_1<100){
+    if(cnt_1<31249){
       cnt_1++;
     }
     else{
-      if(cnt_2<100){
+      if(cnt_2<=0){
 	cnt_2++;
       }
       else{
