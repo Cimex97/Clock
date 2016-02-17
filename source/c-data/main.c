@@ -58,14 +58,14 @@ ISR(TIMER0_OVF_vect){
       cnt_1++;
     }
     else{
-      if(cnt_2<=0){
+      if(cnt_2<0){
 	cnt_2++;
       }
       else{
 	cnt_1 = 0;
 	cnt_2 = 0;
 	PORTC ^= (1<<PC7);
-	if(second<=86400){
+	if(second<86400){
 	  second++;
 	}
 	else {
