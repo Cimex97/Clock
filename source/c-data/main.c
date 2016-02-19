@@ -11,6 +11,7 @@
 
 //myself header
 #include "../h-data/number.h"
+
 #include "../h-data/time.h"
 #include "../h-data/display.h"
 
@@ -45,7 +46,15 @@ int main(){
     clock(numbers.ten, &numbers.m_ten, zeiger);
     clock(numbers.hundred, &numbers.h_one, zeiger);
     clock(numbers.thousand, &numbers.h_ten, zeiger);
-    
+
+    //time settings
+    if(PINB & (1<<PINB3)){
+      second = second +60;
+    }
+     
+    if(PINB & (1<<PINB2)){
+      second = second +36000;
+    }
   }
   return 0;
     
