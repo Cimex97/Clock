@@ -50,7 +50,7 @@ int main(){
 
     if(!(PINB & (1<<PINB3))){
       while(!(PINB & (1<<PINB3))){
-	multiplex(zeiger);
+
       }
       second = second +60;
     }

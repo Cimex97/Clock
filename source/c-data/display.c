@@ -15,7 +15,7 @@ int multiplex(struct value* numbers){
   
   //minute
   PORTB = 0x00;
-  _delay_ms(30);
+  _delay_ms(3);
   PORTA = numbers->m_ten;
   PORTB |= (1<<PB6);
   _delay_ms(3);
@@ -33,6 +33,7 @@ int multiplex(struct value* numbers){
   PORTA = numbers->h_ten;
   PORTB |= (1<<PB4);
   _delay_ms(3);
+  PORTB = 0x00;
   
   return 0;
   

@@ -5,8 +5,9 @@
 int setting(struct value* numbers){
   //direction of the pins
   DDRA = 0xFF;
-  DDRB = 0x0F;
+  DDRB = 0xF0;
   DDRC = 0x3F;
+
 
   //all off;
   PORTB &= ~(1<<PB7);
